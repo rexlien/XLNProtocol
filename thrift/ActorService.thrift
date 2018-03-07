@@ -4,16 +4,23 @@ namespace csharp XLN.Game.Common.Thrift
 
 //typedef binary (cpp2.type = "folly::IOBuf") IOBuf
 //typedef binary (cpp2.type = "std::unique_ptr<folly::IOBuf>") IOBufPtr
+enum MessageType
+{
+    Create = 0,
+    Update = 1,
+    Delete = 2
+}
 
-struct EntityMessage {
+struct Message {
 
   1: i32 id,
   2: string name,
+  4: MessageType type,
   3: map<string, string> properties
 }
 
 
-service EntityService {
+service ActorService {
   
-  void sendMessage(1: EntityMessage msg);
+  void sendMessage(1: Message msg);
 }
