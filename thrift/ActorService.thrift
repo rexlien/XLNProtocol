@@ -23,4 +23,5 @@ struct Message {
 service ActorService {
   
   void sendMessage(1: Message msg);
+  string testString(1: string str);
 }
